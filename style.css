@@ -1,0 +1,40 @@
+body{
+    margin:15px;
+    background-color: lightsteelblue !important ;
+    min-width: 250px;
+}
+.btn {
+    margin: 15px;
+}
+.container-fluid {
+    justify-content: center !important;
+    display: flex !important;
+    text-align: center !important;
+    font-size: 20px;
+    color: blue;
+    color: white !important;
+}
+h1{
+    text-align: center;
+} 
+.card_just4me {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+.card-title {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.btn .btn-primary{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
