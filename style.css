@@ -16,13 +16,17 @@ body{
 }
 h1{
     text-align: center;
-} 
+    text-decoration: underline;
+
+}
+.card-text {
+    font-size: 20px;
+}
 .card_just4me {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 600px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 50px;
 }
 .card-title {
     margin-bottom: 0.5rem;
@@ -37,4 +41,18 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.card-img-top {
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+}
+.quizcard-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.quizcard-footer-content{
+    margin: 5px;
 }
