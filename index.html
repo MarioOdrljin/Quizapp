@@ -17,84 +17,64 @@
     integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
     crossorigin="anonymous"></script>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer ></script>
   <title>Quizapp</title>
 </head>
 
-<body>
+<body onload="init()">
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <span class="navbar-text text-white">
-            Quizapp!
-        </span>
+      <span class="navbar-text text-white">
+        Quizapp!
+      </span>
     </div>
-</nav>
+  </nav>
   <h1> Welcome to the Javaquiz! </h1>
 
   <div class="card_just4me">
     <div class="card">
       <img src="/img/quizcardheader.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Frage 1</h5>
-        <p class="card-text">Welche der folgenden Aussagen zur Vererbung in Java ist richtig?</p>
+        <div class="card-body-maxwith">
+        <h5 class="card-title" id="countquestion">1</h5>
+        <p class="card-text" id="question_quiz">Fragesetllung</p>
+      </div>
 
 
+      <div class="card" id="right" onclick="givenanswer('answer_1')">
+  <div class="card-body card_maxwidth" id="answer_1">
+    <p class="card-title">Antwortmöglichkeit 1</p>
+    <p class="card-text"></p>
+  </div>
+</div>
 
+<div class="card card_maxwidth" id="right" onclick="givenanswer('answer_2')">
+  <div class="card-body card_maxwidth" id="answer_2">
+    <p class="card-title">Antwortmöglichkeit 2</p>
+    <p class="card-text" ></p>
+  </div>
+</div>
 
-        <div class="card">
-          <div class="card-header">
-            Antwortmöglichkeit 1
-          </div>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p>A) Java unterstützt nur die einfache Vererbung (Single Inheritance).</p>
-            </blockquote>
-          </div>
+<div class="card card_maxwidth" id="right" onclick="givenanswer('answer_3')">
+  <div class="card-body card_maxwidth" id="answer_3">
+    <p class="card-title">Antwortmöglichkeit 3</p>
+    <p class="card-text"></p>
+  </div>
+</div>
 
+<div class="card card_maxwidth" id="right" onclick="givenanswer('answer_4')">
+  <div class="card-body card_maxwidth" id="answer_4">
+    <p class="card-title">Antwortmöglichkeit 4</p>
+    <p class="card-text"></p>
+  </div>
+</div>
 
-          <div class="card">
-            <div class="card-header">
-              Antwortmöglichkeit 2
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>B) Eine Klasse kann von mehreren Klassen gleichzeitig erben (Multiple Inheritance).</p>
-              </blockquote>
-            </div>
-          </div>
-
-
-
-          <div class="card">
-            <div class="card-header">
-              Antwortmöglichkeit 3
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>C) Die Vererbung ermöglicht das Hinzufügen von neuen Methoden zu einer bereits existierenden Klasse.</p>
-              </blockquote>
-            </div>
-          </div>
-
-
-          <div class="card">
-            <div class="card-header">
-              Antwortmöglichkeit 4
-            </div>
-            <div class="card-body">
-              <blockquote class="blockquote mb-0">
-                <p>D) Die private-Mitglieder einer Superklasse sind in der abgeleiteten Klasse sichtbar.</p>
-              </blockquote>
-            </div>
-          </div>
-          
-        </div>
         <div class="quizcard-footer">
           <span class="quizcard-footer-content" id="quizcard-footer-content">
-            <b> 1</b>/ <b> 5</b> Fragen
-            
+            <b id="couterfooter">1</b> </b>/ <b id="allquestions"> 7 </b> Fragen
+
           </span>
-          <button type="button" class="btn btn-primary">Bestätigen</button>
+          <button disabled class="btn btn-primary" id="next-button" onclick="nextquestion()">Bestätigen</button>
         </div>
       </div>
     </div>
