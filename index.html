@@ -31,38 +31,55 @@
   </nav>
   <h1> Welcome to the Javaquiz! </h1>
 
+
   <div class="card_just4me">
     <div class="card">
-      <img src="/img/quizcardheader.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
+      <img src="/img/quizcardheader.jpg" class="card-img-top" alt="..." id="quiz-header">
+      
+<!-- Winnerscreen  -->
+      <div class="card-body"  id='quiz-endscreen' style="display: none"> 
+        <div class="text-center"> Quiz has been successfully  completed
+        </div>
+        <div class="text-center display-center font-size"> 
+        <p id='right-answer' class="gap font-size"></p> of <p id='endscreenallquestions' class="gap font-size">  </p> right answered ! 
+        </div>
+        </div>
+        
+<!-- javaquiz screen -->
+
+<div class="progress">
+  <div class="progress-bar" id= "progressbar-quiz" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+</div>
+      <div class="card-body" id="quiz-javabody">
         <div class="card-body-maxwith">
-        <h5 class="card-title" id="countquestion">1</h5>
+        <h5 class="card-title" id="countquestion"></h5>
+        
         <p class="card-text" id="question_quiz">Fragesetllung</p>
       </div>
 
 
-      <div class="card" id="right" onclick="givenanswer('answer_1')">
+  <div class="card card_maxwidth hover" id="right" onclick="givenanswer('answer_1' ,'clicked')">
   <div class="card-body card_maxwidth" id="answer_1">
     <p class="card-title">Antwortmöglichkeit 1</p>
     <p class="card-text"></p>
   </div>
 </div>
 
-<div class="card card_maxwidth" id="right" onclick="givenanswer('answer_2')">
+<div class="card card_maxwidth hover" id="right" onclick="givenanswer('answer_2' ,'clicked')">
   <div class="card-body card_maxwidth" id="answer_2">
     <p class="card-title">Antwortmöglichkeit 2</p>
     <p class="card-text" ></p>
   </div>
 </div>
 
-<div class="card card_maxwidth" id="right" onclick="givenanswer('answer_3')">
-  <div class="card-body card_maxwidth" id="answer_3">
+<div class="card card_maxwidth hover" id="right" onclick="givenanswer('answer_3' ,'clicked')">
+  <div class="card-body card_maxwidth " id="answer_3">
     <p class="card-title">Antwortmöglichkeit 3</p>
     <p class="card-text"></p>
   </div>
 </div>
 
-<div class="card card_maxwidth" id="right" onclick="givenanswer('answer_4')">
+<div class="card card_maxwidth hover" id="right" onclick="givenanswer('answer_4','clicked')">
   <div class="card-body card_maxwidth" id="answer_4">
     <p class="card-title">Antwortmöglichkeit 4</p>
     <p class="card-text"></p>
@@ -74,12 +91,14 @@
             <b id="couterfooter">1</b> </b>/ <b id="allquestions"> 7 </b> Fragen
 
           </span>
-          <button disabled class="btn btn-primary" id="next-button" onclick="nextquestion()">Bestätigen</button>
+          <div class="button-container">
+          <button disabled class="btn btn-primary" id="next-button" onclick="nextquestion()">continue</button>
         </div>
-      </div>
+      </div>  
     </div>
+    <button class="btn btn-primary" id="restart-button" type="button" style="justify-content:center ; display:none" onclick="restart()">Restart</button>
   </div>
 
 </body>
 
-</html>
+</html> 

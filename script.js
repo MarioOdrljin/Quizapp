@@ -1,3 +1,5 @@
+
+/*javaquiz Array*/
 let questions = [
     {
         "question": "Wer hat HTML erfunden?",
@@ -65,88 +67,142 @@ let questions = [
         "right_answer": 4
     }
 ];
- 
 
+/*javaquiz Array*/
 let currentquestion = 0;
-let counter = 1;
+let counter = currentquestion + 1;
+
 function init() {
- 
-  document.getElementById('allquestions').innerHTML = questions.length;
-  
+    /*Quiz Endscreen*/
+    if (counter >= questions.length) {
+        document.getElementById('quiz-endscreen').style = '';
+        document.getElementById('quiz-javabody').style = 'display: none';
+        console.log('counter', questions.length);
+        console.log("das ist die länge der Fragen", (questions.length - 1));
+        document.getElementById('quiz-header').src = '/img/victory.png';
+        document.getElementById('quiz-header').classList.add('quiz-victoryimg');
+        document.getElementById('restart-button').style.display = 'flex';
+        document.getElementById('endscreenallquestions').innerHTML = questions.length - 1;
 
-  let question = questions[currentquestion];
-  let question1 = document.getElementById('question_quiz');
-  let possibleanswer1 = document.getElementById('answer_1');
-  let possibleanswer2 = document.getElementById('answer_2');
-  let possibleanswer3 = document.getElementById('answer_3');
-  let possibleanswer4 = document.getElementById('answer_4');
-  
+        let rightanswer = document.getElementById('right-answer');
+        rightanswer.innerHTML += `<b> ${returnrightanswer} </b>`;
+        
+        /* Setze die Breite des Fortschrittsbalkens auf 100% */
+        document.getElementById('progressbar-quiz').innerHTML = '100%';
+        document.getElementById('progressbar-quiz').style.width = '100%';
 
-
-  question1.innerHTML = `<p>${question['question']}</p>`;
-  possibleanswer1.innerHTML = `<p>${question['answer_1']}</p>`;
-  possibleanswer2.innerHTML = `<p>${question['answer_2']}</p>`;
-  possibleanswer3.innerHTML = `<p>${question['answer_3']}</p>`;
-  possibleanswer4.innerHTML = `<p>${question['answer_4']}</p>`;
-  document.getElementById('countquestion').innerHTML = counter++;
-  
- 
-  
-
-}
-
-function givenanswer(selection) {
-  let question = questions[currentquestion];
-  let clickedanswer = selection.slice(-1);
-  let right_answer = question['right_answer'];
-  let selectedAnswerCard = document.getElementById(selection);
-  let Showuprightanswer = `answer_${question['right_answer']}`;
-  if (selectedAnswerCard) {
-    if (right_answer == clickedanswer) {
-      selectedAnswerCard.parentNode.classList.add('highlight_success');
-      selectedAnswerCard.parentNode.classList.add("max-width");
-      console.log('richtige antwort');
-     
     } else {
-      console.log('flasche antwort');
-      selectedAnswerCard.parentNode.classList.add('highlight_destroyed');
-      document.getElementById(Showuprightanswer).parentNode.classList.add('highlight_success');
-      selectedAnswerCard.parentNode.classList.add('max-width');
-      console.log(right_answer);
+        console.log(counter);
 
-      
+        let percentage = (currentquestion + 1) / questions.length;
+        percentage = Math.round(percentage * 100);
+        console.log('Fortschirtt', percentage);
+        /*counter*/
+        document.getElementById('progressbar-quiz').innerHTML = `${percentage}% `;
+        document.getElementById('progressbar-quiz').style.width = `${percentage}%`;
+
+        document.getElementById('couterfooter').innerHTML = currentquestion + 1;
+        let question = questions[currentquestion];
+        let question1 = document.getElementById('question_quiz');
+        let possibleanswer1 = document.getElementById('answer_1');
+        let possibleanswer2 = document.getElementById('answer_2');
+        let possibleanswer3 = document.getElementById('answer_3');
+        let possibleanswer4 = document.getElementById('answer_4');
+
+
+
+        question1.innerHTML = `<p>${question['question']}</p>`;
+        possibleanswer1.innerHTML = `<p>${question['answer_1']}</p>`;
+        possibleanswer2.innerHTML = `<p>${question['answer_2']}</p>`;
+        possibleanswer3.innerHTML = `<p>${question['answer_3']}</p>`;
+        possibleanswer4.innerHTML = `<p>${question['answer_4']}</p>`;
+        document.getElementById('countquestion').innerHTML = counter++;
+
+
+
     }
+}
+/*Count Hits*/
+let returnrightanswer = 0;
+function givenanswer(selection) {
+    let question = questions[currentquestion];
+    let clickedanswer = selection.slice(-1);
+    let right_answer = question['right_answer'];
+    let selectedAnswerCard = document.getElementById(selection);
+    let Showuprightanswer = `answer_${question['right_answer']}`;
+    /*Display correct answer*/
+    if (selectedAnswerCard) {
+        if (right_answer == clickedanswer) {
+            selectedAnswerCard.parentNode.classList.add('highlight_success');
+            selectedAnswerCard.parentNode.classList.add("max-width");
+            console.log('richtige antwort');
+            returnrightanswer++;
+            console.log(returnrightanswer);
+            /*Display wrong answere*/
+        } else {
+            console.log('flasche antwort');
+            selectedAnswerCard.parentNode.classList.add('highlight_destroyed');
+            document.getElementById(Showuprightanswer).parentNode.classList.add('highlight_success');
+            selectedAnswerCard.parentNode.classList.add('max-width');
+
+
+        }
+
+    }
+    /*Next Questionbutton*/
     document.getElementById('next-button').disabled = false;
-  }
-  
 
 }
 
 function nextquestion() {
-    
-    
-    if (currentquestion < questions.length) {
-      
+
+    clearanswers()
+
+    if (counter <= questions.length) {
+
         currentquestion++;
+
+        let countfooter = document.getElementById('couterfooter');
+        countfooter.innerHTML = '';
+        countfooter.innerHTML += `<b> ${counter} </b>`;
+
+
         document.getElementById('next-button').disabled = true;
         init();
 
+    } else
+        alert("the end is here!");
 
-        document.getElementById('answer_1').parentNode.classList.remove('highlight_success');
-        document.getElementById('answer_1').parentNode.classList.remove('highlight_destroyed');
-        
 
-        document.getElementById('answer_2').parentNode.classList.remove('highlight_success');
-        document.getElementById('answer_2').parentNode.classList.remove('highlight_destroyed');
+}
 
-        document.getElementById('answer_3').parentNode.classList.remove('highlight_success');
-        document.getElementById('answer_3').parentNode.classList.remove('highlight_destroyed');
 
-        document.getElementById('answer_4').parentNode.classList.remove('highlight_success');
-        document.getElementById('answer_4').parentNode.classList.remove('highlight_destroyed');
+function clearanswers() {
+    document.getElementById('answer_1').parentNode.classList.remove('highlight_success');
+    document.getElementById('answer_1').parentNode.classList.remove('highlight_destroyed');
 
-        console.log(currentquestion);
-    }
+
+    document.getElementById('answer_2').parentNode.classList.remove('highlight_success');
+    document.getElementById('answer_2').parentNode.classList.remove('highlight_destroyed');
+
+    document.getElementById('answer_3').parentNode.classList.remove('highlight_success');
+    document.getElementById('answer_3').parentNode.classList.remove('highlight_destroyed');
+
+    document.getElementById('answer_4').parentNode.classList.remove('highlight_success');
+    document.getElementById('answer_4').parentNode.classList.remove('highlight_destroyed');
+
+
+}
+function restart() {
+
+    currentquestion = 0;
+    counter = 0;
+    counter = currentquestion + 1;
+    document.getElementById('quiz-header').src = '/img/quizcardheader.jpg';
+    document.getElementById('quiz-endscreen').style = 'display: none';
+    document.getElementById('quiz-javabody').style = '';
+    init();
+    
 }
 
 
